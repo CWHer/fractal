@@ -12,7 +12,7 @@ from settings import DISPLAY_TYPE
 
 
 class Plot():
-    def __init__(self, start_col="white", end_col="orange"):
+    def __init__(self, start_col="white", end_col="darkorange"):
         self.start_color = Color(start_col)
         self.end_color = Color(end_col)
 
@@ -44,6 +44,5 @@ class Plot():
 
 # # test
 # plot = Plot()
-# w = np.random.randint(0, 2, [600, 800])
-# print(w)
+# w = np.random.randint(0, 3, [600, 800])
 # plot.plotImage(w)
