@@ -7,8 +7,10 @@ from plot import Plot
 # plot.plotImage(f.fractal)
 
 f = JuliaFractal()
-f.generateFractal(complex(0.34, -0.05))
-plot = Plot()
+# f.generateFractal(complex(0.34, -0.05))
+# f.generateFractal()
+f.generateFractal(complex(-0.54, -0.5255))
+plot = Plot("darkorange", "yellow")
 plot.plotImage(f.fractal)
 
 # f = SierpinskiFractal()
