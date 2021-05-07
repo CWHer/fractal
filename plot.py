@@ -33,16 +33,21 @@ class Plot():
         image = colors[fractal - fractal.min()]
 
         if DISPLAY_TYPE == 0:
+            # cv2 uses BGR
+            image = np.array(list(
+                map(lambda x: np.array([x[:, 2], x[:, 1], x[:, 0]]).T,
+                    image)))
             cv.namedWindow("image", cv.WINDOW_NORMAL)
             cv.imshow("image", image)
             cv.waitKey(0)
             cv.destroyAllWindows()
         elif DISPLAY_TYPE == 1:
+            # matplotlib uses RGB
             plt.imshow(image)
             plt.show()
 
 
 # # test
 # plot = Plot()
-# w = np.random.randint(0, 3, [600, 800])
+# w = np.random.randint(0, 3, [10, 10])
 # plot.plotImage(w)
