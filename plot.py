@@ -6,33 +6,35 @@ from colour import Color
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2 as cv
+from utils import timeLog
 
 from settings import DISPLAY_TYPE
 
 
 class Plot():
-    def __init__(self):
-        self.gradient_num = 0
-        self.start_color = Color("white")
-        self.end_color = Color("orange")
+    def __init__(self, start_col="white", end_col="orange"):
+        self.start_color = Color(start_col)
+        self.end_color = Color(end_col)
 
     # generate a RGB list of gradient colors
-    def __generateGradientColors(self) -> list:
+    def __generateGradientColors(self, gradient_num) -> list:
         return np.array(
             list(map(lambda x: x.rgb,
                      list(self.start_color.
-                          range_to(self.end_color, self.gradient_num)))))
+                          range_to(self.end_color, gradient_num)))))
 
-    # w is a n x m np.ndarray of single value
-    def plotImage(self, w: np.ndarray):
+    # fractal is a n x m np.ndarray of single value
+    @timeLog
+    def plotImage(self, fractal: np.ndarray):
 
-        self.gradient_num = w.max() - w.min() + 1
-        colors = self.__generateGradientColors()
+        colors = self.__generateGradientColors(
+            fractal.max() - fractal.min() + 1)
 
-        image = colors[w - w.min()]
+        image = colors[fractal - fractal.min()]
 
         if DISPLAY_TYPE == 0:
-            cv.imshow('image', image)
+            cv.namedWindow("image", cv.WINDOW_NORMAL)
+            cv.imshow("image", image)
             cv.waitKey(0)
             cv.destroyAllWindows()
         elif DISPLAY_TYPE == 1:
