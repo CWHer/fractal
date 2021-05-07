@@ -1,5 +1,6 @@
 from mandelbrot import MandelbrotFractal
 from julia import JuliaFractal
+from sierpinski import SierpinskiFractal
 from plot import Plot
 
 # f = MandelbrotFractal()
@@ -7,7 +8,12 @@ from plot import Plot
 # plot = Plot("black", "white")
 # plot.plotImage(f.fractal)
 
-f = JuliaFractal()
-f.generateFractal(complex(0.34, -0.05))
-plot = Plot()
+# f = JuliaFractal()
+# f.generateFractal(complex(0.34, -0.05))
+# plot = Plot()
+# plot.plotImage(f.fractal)
+
+f = SierpinskiFractal()
+f.generateFractal()
+plot = Plot("white", "black")
 plot.plotImage(f.fractal)

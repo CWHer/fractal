@@ -1,4 +1,5 @@
 # image size
+#   for julia and mandelbrot fractals
 IMAGE_WIDTH = 1200
 IMAGE_HEIGHT = 900
 
